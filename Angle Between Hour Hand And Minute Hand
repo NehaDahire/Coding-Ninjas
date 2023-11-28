@@ -1,0 +1,22 @@
+Problem of the day 28 November 2023
+#include <bits/stdc++.h> 
+int minimum(int x,int y){
+    if(x>y){
+        return y;
+    }
+    else{
+        return x;
+    }
+}
+int findAngle(int hour, int minute) {
+    // Write your code here.
+    if(hour==12)hour=0;
+    float hangle=0.5*((hour*60)+minute);
+    float mangle=6*minute;
+    float diff=abs(hangle - mangle);
+    //cout<<"diff:"<<diff<<endl;
+    float ans=minimum(360-diff,diff);
+    int y=floor(ans);
+    //cout<<"ans"<<ans<<endl;
+    return y;
+}

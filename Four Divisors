@@ -1,0 +1,41 @@
+problem of the day -> 2nd december 2023
+moderate
+Given an integer array nums, return the sum of divisors of the integers in that array that have exactly four divisors. If there is no such integer in the array, return 0.
+CODE:
+#include <bits/stdc++.h> 
+int solve(int x){
+    int n_div =1;//itself
+    int sum_div=x;//sum=itself
+    if(x!=1){//1 is also divisor
+        n_div++;
+        sum_div++;
+    }
+    for(int i=2;i<=sqrt(x);i++){
+        if(x%i==0){
+            n_div++;
+            sum_div+=i;
+            if((x/i)!=i){
+                n_div++;
+                sum_div+=(x/i);
+            }
+
+            if (n_div > 4) {
+                return 0;
+            }
+        }
+    }
+    if(n_div!=4){
+        return 0;
+    }
+    return sum_div;
+}
+int sumFourDivisors(vector<int> &arr, int n)
+{
+    // Write your code here.
+    int sum=0;
+    for(int element : arr){
+        int ans=solve(element);
+        sum+=ans;
+    }
+    return sum;
+}

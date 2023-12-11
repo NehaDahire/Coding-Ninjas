@@ -1,0 +1,16 @@
+Given an array of integers,print teh minimum of absolute differnce of all possible pairs of elements
+//better than 100%
+CODE:
+#include <bits/stdc++.h> 
+int minDiff(int n, vector < int > arr) {
+   // Write your code here.
+   sort(arr.begin(),arr.end());
+   int min=INT_MAX;
+   for(int i=0;i<arr.size()-1;i++){
+      int hi=abs(arr[i] - arr[i+1]);
+      if(hi<=min){
+         min=hi;
+      }
+   }
+   return min;
+}

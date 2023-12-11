@@ -1,0 +1,18 @@
+Generate a list of binary numbers from 1 to 'N'.
+CODE:
+#include <bits/stdc++.h> 
+
+vector<string> generateBinaryNumbers(int n)
+{
+    // Write your code here.
+    vector<string> result(n);
+    queue<string> a;
+    a.push("1");
+    for(int i=0;i<result.size();i++){
+        result[i]=a.front();
+        a.pop();
+        a.push(result[i]+"0");
+        a.push(result[i]+"1");
+    }
+    return result;
+}

@@ -1,0 +1,43 @@
+You are giben a singly linked list containing n nodes,where every node in the linked list contains a pointer
+next which points to the next node in the list and having values either 0 or 1. we have to return decimal representation of the given number in the linked list
+//better than 100%
+CODE:
+/************************************************************
+
+    Following is the linkedList class structure:
+
+    class Node {
+    public:
+        int data;
+        Node *next;
+
+        Node(int val) {
+            this->data = val;
+            next = NULL;
+        }
+        ~Node() {
+            if (next != NULL) {
+                delete next;
+            }
+        }
+};
+
+************************************************************/
+
+int binaryToInteger(int n, Node *head) {
+    //    Write your code here
+    vector<int>bi;
+    Node * q;
+    q=head;
+    while(q!=NULL){
+        bi.push_back(q->data);
+        q=q->next;
+    }
+    int power=1;
+    int val=0;
+    for(int i=bi.size()-1;i>=0;i--){
+        val=val+power*bi[i];
+        power*=2;
+    }
+    return val;
+}
